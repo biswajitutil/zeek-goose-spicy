@@ -1,0 +1,14 @@
+# This file sets up protocol confirmation/rejection for analyzers.
+
+module Zeek_zeek_spicy_goose;
+
+import zeek_spicy_goose;
+import zeek;
+
+on zeek_spicy_goose::GOOSEPacket::%done {
+    zeek::confirm_protocol();
+}
+
+on zeek_spicy_goose::GOOSEPacket::%error {
+    zeek::reject_protocol("error while parsing GOOSE record");
+}

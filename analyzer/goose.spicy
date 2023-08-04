@@ -1,0 +1,19 @@
+# TODO: Define your analyzer here.
+
+#import spicy;
+
+module zeek_spicy_goose;
+
+public type GOOSEPacket = unit {
+    #appid: uint8;
+    #pkt_len: uint8;
+    payload: bytes &eod;
+
+     on %init {
+	print("goose init", self);
+     }
+     on %done {
+	print("goose done", self);
+     }
+};
+

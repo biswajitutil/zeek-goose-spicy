@@ -1,0 +1,9 @@
+packet analyzer spicy::GOOSE:
+    parse with zeek_spicy_goose::GOOSEPacket;
+
+import zeek_spicy_goose;
+#import Zeek_zeek_spicy_goose;
+
+#on zeek_spicy_goose::GOOSEPacket -> event GOOSE::message($conn, $is_orig, self.payload);
+#on zeek_spicy_goose::GOOSEPacket -> event GOOSE::message($packet, self.appid, self.pkt_len);
+on zeek_spicy_goose::GOOSEPacket -> event GOOSE::message($packet, self.payload);
